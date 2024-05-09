@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="12dp"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculate Tip"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:layout_margin="20dp"
+        android:fontFamily="sans-serif"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etBill"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Bill Total"
+        android:padding="12dp"
+        android:layout_margin="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvChoosetip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Choose Tip Percentage"
+        android:layout_margin="20dp"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/etBill"/>
+
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/tipSlider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:valueFrom="0.0"
+        android:valueTo="30.0"
+        android:stepSize="1"
+        app:tickVisible="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChoosetip" />
+
+
+    <TextView
+        android:id="@+id/tvServiceQuality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Excellent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="20dp"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/tipSlider"/>
+
+    <TextView
+        android:id="@+id/tvSplitBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Split By Members 1"
+        android:layout_margin="20dp"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/tvServiceQuality"/>
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/tipSliderSplitBy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:valueFrom="1"
+        android:valueTo="10"
+        android:stepSize="1"
+        app:tickVisible="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSplitBy" />
+
+    <TextView
+        android:id="@+id/tvRounding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Rounding Amount"
+        android:layout_margin="20dp"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/tipSliderSplitBy"/>
+
+
+    <RadioGroup
+        android:id="@+id/radioGrp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_margin="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvRounding"
+        >
+
+        <RadioButton
+            android:id="@+id/radioUp"
+            android:textSize="14sp"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:checked="true"
+            android:layout_height="wrap_content"
+            android:text="Round Up" />
+
+        <RadioButton
+            android:id="@+id/radioDown"
+            android:textSize="14sp"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Round Down" />
+
+
+    </RadioGroup>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toBottomOf="@+id/radioGrp"
+        android:layout_marginTop="12dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="12dp"
+        android:layout_marginBottom="12dp"
+        app:cardBackgroundColor="#008C77"
+        android:layout_margin="12dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <TextView
+                android:id="@+id/tvbase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Base"
+                android:textColor="#C0F5EF"
+                android:textSize="18dp" />
+
+
+            <TextView
+                android:id="@+id/tvbaseAmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="400.0"
+                android:text="0.00"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="18dp"
+                android:textColor="#C0F5EF"/>
+
+
+
+            <TextView
+                android:id="@+id/tvtip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Tip"
+                android:layout_below="@+id/tvbase"
+                android:textColor="#C0F5EF"
+                android:textSize="18dp" />
+
+
+            <TextView
+                android:id="@+id/tvtipAmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="20.0"
+                android:text="0.00"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_below="@+id/tvbase"
+                android:textSize="18dp"
+                android:textColor="#C0F5EF"/>
+
+
+            <TextView
+                android:id="@+id/tvPerPerson"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Per Person"
+                android:layout_below="@+id/tvtip"
+                android:textColor="#C0F5EF"
+                android:textSize="18dp" />
+
+
+            <TextView
+                android:id="@+id/tvPerPersonAmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="105.0"
+                android:text="0.00"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_below="@+id/tvtip"
+                android:textSize="18dp"
+                android:textColor="#C0F5EF"/>
+
+            <View
+                android:id="@+id/viewline"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tvPerPerson"
+                android:layout_margin="20dp"
+                android:background="@android:color/white" />
+
+
+            <TextView
+                android:id="@+id/tvtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Total"
+                android:layout_below="@+id/viewline"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+
+            <TextView
+                android:id="@+id/tvtotalAmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="105.0"
+                android:text="0.00"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_below="@+id/viewline"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                />
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
